@@ -4,6 +4,8 @@
 1. Image -> AWS S3
 2. DB -> mongoDB
 3. Model -> Link, Description
+4. [Nginx](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+5. [Esbuild](https://esbuild.github.io/)
 
 ## Frontend
 1. [Tailwind](https://tailwindcss.com/docs/configuration)
