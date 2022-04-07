@@ -19,7 +19,7 @@ function CardDetail() {
           <div className="content">
             <div className="front" style={style}>
               <div className="inner">
-                <h2>Pets world</h2>
+                <h2>Pet's world</h2>
                 <label htmlFor="card1" className="button" aria-hidden="true">
                   Details
                 </label>
@@ -28,7 +28,7 @@ function CardDetail() {
             <div className="back">
               <div className="inner">
                 <div className="info">
-                  <span>bath</span>
+                  <span>Sentence</span>
                 </div>
                 <div className="description">
                   <p>
@@ -49,6 +49,9 @@ function CardDetail() {
               </div>
             </div>
           </div>
+          <button class="px-7 py-3 w-full rounded dark:bg-blue-50 dark:text-slate-800 bg-slate-800 text-blue-50 dark:hover:bg-slate-800 dark:hover:text-blue-50 hover:bg-blue-50 hover:text-slate-800">
+            CHANGE
+          </button>
         </div>
       </div>
     </>
