@@ -3,7 +3,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const CardSchema = new mongoose.Schema({
   _id: Number,
-  imageUrl: {
+  imageName: {
     type: String,
     required: true,
   },
@@ -16,9 +16,9 @@ const CardSchema = new mongoose.Schema({
 CardSchema.plugin(AutoIncrement);
 
 CardSchema.methods = {
-  toJson() {
+  toJSON() {
     return {
-      imageUrl: this.imageUrl,
+      imageName: this.imageName,
       description: this.description,
     }
   }

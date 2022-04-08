@@ -1,5 +1,5 @@
 require('esbuild').build({
-  entryPoints: ['index.ts'],
+  entryPoints: ['src/index.ts'],
   bundle: true,
   minify: true,
   platform: 'node',
