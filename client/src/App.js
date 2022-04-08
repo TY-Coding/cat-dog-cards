@@ -40,7 +40,7 @@ function App() {
     <DataContext.Provider value={{ auth, setAuth }}>
       <Router>
         <>
-          <div className="w-full h-full min-h-screen px-4 py-16 text-slate-800 dark:text-blue-50 bg-blue-50 dark:bg-slate-800 overflow-hidden">
+          <div className="w-full h-full min-h-screen px-4 py-16 text-slate-800 dark:text-blue-50 bg-blue-50 dark:bg-slate-800 overflow-x-hidden">
             <div className="w-full max-w-xl p-2 mx-auto relative">
               <Switch>
                 <Route path="/back">

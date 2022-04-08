@@ -12,11 +12,15 @@ import { useData } from '../utils/context';
 function BackEnd() {
   const { auth } = useData(); // 取得登入狀態
 
+  const [image, setImage] = useState({ preview: '', raw: '' });
+  console.log('image', image); //for check
+
   //存欄位值
   const [fields, setFields] = useState({
     file: '',
     description: '',
   });
+  console.log('fields', fields); //for check
 
   //存錯誤訊息
   const [fieldErrors, setFieldErrors] = useState({
@@ -25,6 +29,12 @@ function BackEnd() {
   });
 
   const handleFieldChange = (e) => {
+    if (e.target.name === 'file') {
+      setImage({
+        preview: URL.createObjectURL(e.target.files[0]),
+        raw: e.target.files[0],
+      });
+    }
     const updatedFields = {
       ...fields,
       [e.target.name]: e.target.value,
@@ -97,6 +107,15 @@ function BackEnd() {
                   {fieldErrors.file !== '' && (
                     <small className="text-red-500">{fieldErrors.file}</small>
                   )}
+                  {image.preview ? (
+                    <img
+                      src={image.preview}
+                      alt="preview"
+                      className="w-[200px]"
+                    />
+                  ) : (
+                    <h5 className="text-center">Preview your photo</h5>
+                  )}
                 </div>
                 <div>
                   <label className="block mb-2 text-sm font-medium">
@@ -130,11 +149,11 @@ function BackEnd() {
         </div>
       ) : (
         <div className="wrapper">
-          <div className="card z-20">
+          <div className="card z-20 text-center">
             <Link
               type="button"
               to="/login"
-              className="w-full text-blue-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="text-blue-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-20 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               請前往登入
             </Link>
