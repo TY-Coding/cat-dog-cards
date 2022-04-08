@@ -5,12 +5,17 @@ import {
   renderFile,
 } from 'ejs';
 import 'dotenv/config';
+import cors from 'cors';
 import './utils/mongoose';
 import {
   CardRouter,
 } from './routers';
 
 const app = express();
+
+app.use(cors({
+  origin: process.env.FRONTEND_PORT,
+}));
 
 const port = process.env.NODE_DOCKER_PORT;
 
