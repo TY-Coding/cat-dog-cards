@@ -31,6 +31,7 @@ import {
 export default async function (req: any, res: Response) {
   try {
     const schema: Joi.ObjectSchema = Joi.object({
+      uploadImage: Joi.string(),
       description: Joi.string().max(120).required(),
     });
 
@@ -45,6 +46,7 @@ export default async function (req: any, res: Response) {
       });
     }
 
+    console.log(req.file);
     const newCard: any = {
       imageName: req.file?.key,
       description: req.body.description,

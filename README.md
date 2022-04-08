@@ -4,7 +4,7 @@
 ```
 docker compose up
 ```
-To stop docker, just press `Cmd + C`.
+To stop docker, just press `Ctrl + C`.
 
 ## API Documentation
 ```

@@ -11,7 +11,7 @@ const style = {
 const handleDrawCard = () => {
   async function sendSubmit() {
     try {
-      const sendApi = await axios.get(`localhost:8080/api/card`);
+      const sendApi = await axios.get('http://localhost:8080/api/card');
       console.log('Get sendApi:', sendApi.data);
     } catch (e) {
       console.log(e);

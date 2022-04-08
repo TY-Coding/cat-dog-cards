@@ -67,18 +67,18 @@ function BackEnd() {
   const handleSumbmit = (e) => {
     e.preventDefault(); //記住你輸入時的值,submit時不會清空
 
-    const formData = new FormData(e.target);
-    formData.append('uploadImage', image.raw);
-    formData.append('description', fields.description);
-    let checkFile = formData.get('uploadImage');
-    let checkDescription = formData.get('description');
+    const data = new FormData();
+    data.append('uploadImage', image.raw);
+    data.append('description', fields.description);
+    let checkFile = data.get('uploadImage');
+    let checkDescription = data.get('description');
     console.log('checkFile', checkFile); //for check
     console.log('checkDescription', checkDescription); //for check
 
     //NEXT: 送到伺服器去
     async function sendSubmit() {
       try {
-        const sendApi = await axios.post(`localhost:8080/api/card`, formData);
+        const sendApi = await axios.post(`http://localhost:8080/api/card`, data);
         console.log('Post sendApi:', sendApi.data);
       } catch (e) {
         console.log(e.response);
