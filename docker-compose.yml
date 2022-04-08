@@ -1,32 +1,40 @@
 version: '3.8'
 
 services:
+  mongodb:
+    image: mongo:latest
+    env_file:
+      - ./.env
+    ports:
+      - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
+    volumes:
+      - ./data:/data/db
+
+  server:
+    container_name: server
+    depends_on:
+      - mongodb
+    build: ./server
+    env_file:
+      - ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    environment:
+      - DB_HOST=mongodb
+      - DB_ENV=mongodb
+      - DB_PORT=27017
+      - DB_DATABASE=cat-dog
+
+  #client
+  
   nginx:
     image: nginx:latest
+    depends_on:
+      - server
     ports:
       - 80:80
       - 443:443
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
 
-  mongodb:
-    image: mongo:latest
-    env_file:
-      - ./.env
-    ports:
-      - $MONGO_LOCAL_PORT:$MONGO_DOCKER_PORT
-    volumes:
-      - ./data:/data/db
-
-  server:
-    container_name: server
-    # depends_on:
-    #   - mongodb
-    build: ./server
-    env_file:
-      - ./.env
-    ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
-
-  #client
     
