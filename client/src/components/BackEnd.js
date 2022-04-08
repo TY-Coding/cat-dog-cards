@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import axios from 'axios';
+
 //====== below icon start ======//
 import { CameraIcon } from '@heroicons/react/solid';
 //====== above icon end ======//
@@ -13,7 +15,7 @@ function BackEnd() {
   const { auth } = useData(); // 取得登入狀態
 
   const [image, setImage] = useState({ preview: '', raw: '' });
-  console.log('image', image); //for check
+  console.log('image', image.raw); //for check
 
   //存欄位值
   const [fields, setFields] = useState({
@@ -66,12 +68,23 @@ function BackEnd() {
     e.preventDefault(); //記住你輸入時的值,submit時不會清空
 
     const formData = new FormData(e.target);
-    let checkFile = formData.get('file');
+    formData.append('uploadImage', image.raw);
+    formData.append('description', fields.description);
+    let checkFile = formData.get('uploadImage');
     let checkDescription = formData.get('description');
     console.log('checkFile', checkFile); //for check
     console.log('checkDescription', checkDescription); //for check
 
     //NEXT: 送到伺服器去
+    async function sendSubmit() {
+      try {
+        const sendApi = await axios.post(`localhost:8080/api/card`, formData);
+        console.log('Post sendApi:', sendApi.data);
+      } catch (e) {
+        console.log(e.response);
+      }
+    }
+    sendSubmit();
   };
 
   return (

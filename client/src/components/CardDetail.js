@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/Card.scss'; //Card 樣式
+
+//====== below api connect tool start ======//
+import axios from 'axios';
 
 const style = {
   backgroundImage: "url('https://picsum.photos/id/237/200/300')",
+};
+
+const handleDrawCard = () => {
+  async function sendSubmit() {
+    try {
+      const sendApi = await axios.get(`localhost:8080/api/card`);
+      console.log('Get sendApi:', sendApi.data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  sendSubmit();
 };
 
 function CardDetail() {
@@ -49,7 +64,10 @@ function CardDetail() {
               </div>
             </div>
           </div>
-          <button className="px-7 py-3 w-full rounded dark:bg-blue-50 dark:text-slate-800 bg-slate-800 text-blue-50 dark:hover:bg-slate-800 dark:hover:text-blue-50 hover:bg-blue-50 hover:text-slate-800">
+          <button
+            onClick={handleDrawCard}
+            className="px-7 py-3 w-full rounded dark:bg-blue-50 dark:text-slate-800 bg-slate-800 text-blue-50 dark:hover:bg-slate-800 dark:hover:text-blue-50 hover:bg-blue-50 hover:text-slate-800"
+          >
             CHANGE
           </button>
         </div>
