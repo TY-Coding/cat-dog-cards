@@ -1,9 +1,22 @@
 # cat-dog-cards
 
+## Docker Compose usage
+```
+docker compose up
+```
+To stop docker, just press `Cmd + C`.
+
+## API Documentation
+```
+localhost:8080/apidoc
+```
+
 ## Backend
 1. Image -> AWS S3
 2. DB -> mongoDB
 3. Model -> Link, Description
+4. [Nginx](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+5. [Esbuild](https://esbuild.github.io/)
 
 ## Frontend
 1. [Tailwind](https://tailwindcss.com/docs/configuration)
