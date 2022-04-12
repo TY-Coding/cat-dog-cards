@@ -104,25 +104,25 @@ $accent-color: #355cc9;
 		justify-items: center;
 	}
 
-	.info {
-		position: relative;
-		display: flex;
-		align-items: center;
-		color: $accent-color;
-		grid-row: 3;
-		&:not(:first-of-type):before {
-			content: '';
-			position: absolute;
-			left: -0.9em;
-			height: 18px;
-			width: 1px;
-			background-color: #ccc;
-		}
-		span {
-			font-size: 2em;
-			font-weight: 700;
-		}
-	}
+	// .info {
+	// 	position: relative;
+	// 	display: flex;
+	// 	align-items: center;
+	// 	color: $accent-color;
+	// 	grid-row: 3;
+	// 	&:not(:first-of-type):before {
+	// 		content: '';
+	// 		position: absolute;
+	// 		left: -0.9em;
+	// 		height: 18px;
+	// 		width: 1px;
+	// 		background-color: #ccc;
+	// 	}
+	// 	span {
+	// 		font-size: 2em;
+	// 		font-weight: 700;
+	// 	}
+	// }
 
 	.description {
 		grid-row: 5;

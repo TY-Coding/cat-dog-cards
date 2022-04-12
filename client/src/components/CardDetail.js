@@ -4,23 +4,27 @@ import '../styles/Card.scss'; //Card 樣式
 //====== below api connect tool start ======//
 import axios from 'axios';
 
-const style = {
-  backgroundImage: "url('https://picsum.photos/id/237/200/300')",
-};
-
-const handleDrawCard = () => {
-  async function sendSubmit() {
-    try {
-      const sendApi = await axios.get('http://localhost:8080/api/card');
-      console.log('Get sendApi:', sendApi.data);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-  sendSubmit();
-};
-
 function CardDetail() {
+  const [petData, setPetData] = useState();
+  console.log('petData:', petData); //for check
+
+  const handleDrawCard = () => {
+    async function sendSubmit() {
+      try {
+        const sendApi = await axios.get('http://localhost:8080/api/card');
+        console.log('Get sendApi:', sendApi.data);
+        setPetData(sendApi.data.data);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    sendSubmit();
+  };
+
+  const style = {
+    backgroundImage: "url('https://picsum.photos/id/237/200/300')",
+  };
+
   return (
     <>
       <div className="wrapper">
@@ -34,7 +38,7 @@ function CardDetail() {
           <div className="content">
             <div className="front" style={style}>
               <div className="inner">
-                <h2>Pet's world</h2>
+                <h2>喵喵狗狗共和卡</h2>
                 <label htmlFor="card1" className="button" aria-hidden="true">
                   Details
                 </label>
@@ -42,17 +46,11 @@ function CardDetail() {
             </div>
             <div className="back">
               <div className="inner">
-                <div className="info">
+                {/* <div className="info">
                   <span>Sentence</span>
-                </div>
+                </div> */}
                 <div className="description">
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Voluptates earum nostrum ipsam ullam, reiciendis nam
-                    consectetur? Doloribus voluptate architecto possimus
-                    perferendis tenetur nemo amet temporibus, enim soluta nam,
-                    debitis.
-                  </p>
+                  <p>{petData && petData.description}</p>
                 </div>
                 <label
                   htmlFor="card1"
