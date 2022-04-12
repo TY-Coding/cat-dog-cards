@@ -10,10 +10,18 @@ services:
     volumes:
       - ./data:/data/db
 
+  client:
+    build: ./client
+    env_file:
+      - ./.env
+    volumes:
+      - ./server/build:/app/build
+
   server:
-    container_name: server
+    # container_name: server
     depends_on:
       - mongodb
+      - client
     build: ./server
     env_file:
       - ./.env
@@ -24,8 +32,6 @@ services:
       - DB_ENV=mongodb
       - DB_PORT=27017
       - DB_DATABASE=cat-dog
-
-  #client
   
   nginx:
     image: nginx:latest
