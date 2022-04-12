@@ -2,9 +2,17 @@ import {
   Request,
   Response,
 } from 'express';
+import aws from 'aws-sdk';
 import {
   CardModel,
 } from '../../models/card';
+
+aws.config.update({
+  secretAccessKey: process.env.AWS_SK,
+  accessKeyId: process.env.AWS_AK,
+});
+
+const s3 = new aws.S3();
 
 /**
  * @api {get} /api/card Get random card
@@ -30,8 +38,22 @@ export default async function (_req: Request, res: Response) {
     const luckyNum = Math.floor(Math.random() * cardCount) + 1;
 
     const cardFound: any = await CardModel.findById(luckyNum);
+    const s3Params: any = {
+      Bucket: process.env.S3_BUCKET!,
+      Key: cardFound.imageName,
+    };
+    s3.getObject(s3Params, function(err, data) {
+      if (err) {
+        return res.send({ error: err });
+      }
 
-    res.json({ data: cardFound });
+      const b64 = data.Body!.toString('base64');
+      const mimeType = 'image/*';
+      res.json({
+        description: cardFound.description,
+        imageSrc: `data:${mimeType};base64,${b64}`,
+      });
+    });
   } catch (e) {
     console.error(e);
   }
