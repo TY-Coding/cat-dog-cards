@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/Card.scss'; //Card 樣式
+
 import { spinner } from './spinner';
+import { ApiUrl } from '../utils/config';
 
 //====== below api connect tool start ======//
 import axios from 'axios';
@@ -14,7 +16,7 @@ function CardDetail() {
     setLoading(true);
     async function sendSubmit() {
       try {
-        const sendApi = await axios.get('http://localhost:8080/api/card');
+        const sendApi = await axios.get(ApiUrl);
         console.log('Get sendApi:', sendApi.data);
         setPetData(sendApi.data);
         setLoading(false);

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { Account, Password } from '../utils/config';
+
 //====== below 取得Context資料 start ======//
 import { useData } from '../utils/context';
 //====== above 取得Context資料 end ======//
@@ -55,7 +57,7 @@ function Login() {
     const formData = new FormData(e.target);
     let checkEmail = formData.get('email');
     let checkPassword = formData.get('password');
-    if (checkEmail === '1@1.qw' && checkPassword === '123') {
+    if (checkEmail === Account && checkPassword === Password) {
       setAuth(true);
       history.push('/back');
     } else {

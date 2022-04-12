@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
+import { ApiUrl } from '../utils/config';
 
 //====== below icon start ======//
 import { CameraIcon } from '@heroicons/react/solid';
@@ -78,10 +79,17 @@ function BackEnd() {
     //NEXT: 送到伺服器去
     async function sendSubmit() {
       try {
-        const sendApi = await axios.post(`http://localhost:8080/api/card`, data);
-        console.log('Post sendApi:', sendApi.data);
+        const sendApi = await axios.post(ApiUrl, data);
+        console.log('Post sendApi:', sendApi.data); //for check
+        setImage({ preview: '', raw: '' });
+        setFields({
+          file: '',
+          description: '',
+        });
+        alert('成功');
       } catch (e) {
         console.log(e.response);
+        alert('失敗');
       }
     }
     sendSubmit();
