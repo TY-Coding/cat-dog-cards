@@ -1,3 +1,4 @@
+import path from 'path';
 import express, {
   json,
 } from 'express';
@@ -20,17 +21,20 @@ app.use(cors({
 const port = process.env.NODE_DOCKER_PORT;
 
 app.use(json());
-app.use(express.static(__dirname + '/../apidoc'));
-app.set('views', __dirname + '/../apidoc');
+app.use(express.static(path.join(__dirname, '/../build')));
+// app.use(express.static(path.join(__dirname, '/../apidoc')));
+// app.set('views', __dirname + '/../apidoc');
 app.engine('html', renderFile);
 
 app.get('/', function (_req, res) {
-  res.send('Hello World!');
+  res.sendFile(
+    path.join(__dirname, "/../build/index.html")
+  );
 });
 
-app.get('/apidoc', async (_req, res) => {
-  res.render('index.html');
-});
+// app.get('/apidoc', async (_req, res) => {
+//   res.render('index.html');
+// });
 
 app.use('/api', CardRouter);
 
