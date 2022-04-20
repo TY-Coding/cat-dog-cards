@@ -6,6 +6,7 @@ import { Blob, Blob1 } from './components/blob';
 import Card from './components/CardDetail';
 import Login from './components/Login';
 import BackEnd from './components/BackEnd';
+import NotFoundPage from './components/NotFoundPage';
 //====== below components end ======//
 
 //====== below icon start ======//
@@ -51,6 +52,9 @@ function App() {
                 </Route>
                 <Route exact path="/">
                   <Card />
+                </Route>
+                <Route path="/*">
+                  <NotFoundPage />
                 </Route>
               </Switch>
               <div className="absolute top-1/3 right-1/4 w-[650px] z-10">

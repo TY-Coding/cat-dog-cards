@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+//====== below api connect tool start ======//
 import axios from 'axios';
 import { ApiUrl } from '../utils/config';
+//====== above api connect tool start ======//
 
 //====== below icon start ======//
-import { CameraIcon } from '@heroicons/react/solid';
+import { CameraIcon, HomeIcon } from '@heroicons/react/solid';
 //====== above icon end ======//
 
 //====== below 取得Context資料 start ======//
@@ -13,6 +16,7 @@ import { useData } from '../utils/context';
 //====== above 取得Context資料 end ======//
 
 function BackEnd() {
+  const history = useHistory();
   const { auth } = useData(); // 取得登入狀態
 
   const [image, setImage] = useState({ preview: '', raw: '' });
@@ -107,7 +111,15 @@ function BackEnd() {
                 onSubmit={handleSumbmit}
                 className="space-y-6"
               >
-                <h5 className="text-xl font-medium ">後台</h5>
+                <div className="flex items-center justify-between">
+                  <h5 className="text-xl font-medium ">後台</h5>
+                  <HomeIcon
+                    className="w-5 h-5 mr-2 cursor-pointer"
+                    onClick={() => {
+                      history.push('/');
+                    }}
+                  />
+                </div>
                 <div>
                   <label className="block mb-2 text-sm font-medium">
                     Upload

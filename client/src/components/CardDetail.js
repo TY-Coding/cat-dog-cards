@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/Card.scss'; //Card 樣式
 
-import { spinner } from './spinner';
-import { ApiUrl } from '../utils/config';
+import { spinner } from './spinner'; //tailwind spinner
 
 //====== below api connect tool start ======//
 import axios from 'axios';
+import { ApiUrl } from '../utils/config';
+//====== above api connect tool start ======//
 
 function CardDetail() {
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,10 @@ function CardDetail() {
       }
     }
     sendSubmit();
+  };
+
+  let logo = {
+    backgroundImage: "url('https://picsum.photos/id/102/200/300')",
   };
 
   let style = {
@@ -54,7 +59,7 @@ function CardDetail() {
               ''
             ) : (
               <div className="content">
-                <div className="front" style={style}>
+                <div className="front" style={logo}>
                   <div className="inner">
                     <h2>喵喵狗狗共和卡</h2>
                     <label
@@ -66,7 +71,7 @@ function CardDetail() {
                     </label>
                   </div>
                 </div>
-                <div className="back">
+                <div className="back" style={style}>
                   <div className="inner">
                     <div className="description">
                       <p>{petData && petData.description}</p>
@@ -89,11 +94,6 @@ function CardDetail() {
             >
               請抽一張卡
             </button>
-
-            {/* <UnsplashReact
-            accessKey={MY_ACCESS_KEY}
-            Uploader={withDefaultProps(Base64Uploader, { name: 'event[logo]' })}
-          /> */}
           </div>
         </div>
       )}
