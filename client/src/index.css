@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* clear safari btn style */
+button, [type='button']{-webkit-appearance: none;}
