@@ -26,17 +26,17 @@ app.use(express.static(path.join(__dirname, '/../build')));
 // app.set('views', __dirname + '/../apidoc');
 app.engine('html', renderFile);
 
-app.get('/', function (_req, res) {
-  res.sendFile(
-    path.join(__dirname, "/../build/index.html")
-  );
-});
-
 // app.get('/apidoc', async (_req, res) => {
-//   res.render('index.html');
-// });
-
-app.use('/api', CardRouter);
+  //   res.render('index.html');
+  // });
+  
+  app.use('/api', CardRouter);
+  
+  app.get('/*', function (_req, res) {
+    res.sendFile(
+      path.join(__dirname, "/../build/index.html")
+    );
+  });
 
 app.listen(port, function () {
   console.log(`Listening on port ${port}...`);
