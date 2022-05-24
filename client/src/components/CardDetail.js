@@ -30,7 +30,7 @@ function CardDetail() {
   };
 
   let logo = {
-    backgroundImage: "url('https://picsum.photos/id/102/200/300')",
+    backgroundImage: "url('images/cat-dog-logo.jpg')",
   };
 
   let style = {
@@ -55,19 +55,19 @@ function CardDetail() {
               className="more"
               aria-hidden="true"
             />
-            {petData === undefined ? (
+            {/* {petData === undefined ? (
               ''
-            ) : (
+            ) : ( */}
               <div className="content">
                 <div className="front" style={logo}>
                   <div className="inner">
-                    <h2>喵喵狗狗共和卡</h2>
+                    <h2 className="text-3xl text-zinc-700">喵喵狗狗共和卡</h2>
                     <label
                       htmlFor="card1"
-                      className="button"
+                      className="button text-lg text-slate-700 border-4 border-slate-300 hover:border-slate-400"
                       aria-hidden="true"
                     >
-                      Details
+                      翻牌
                     </label>
                   </div>
                 </div>
@@ -78,19 +78,19 @@ function CardDetail() {
                     </div>
                     <label
                       htmlFor="card1"
-                      className="button return"
+                      className="button text-lg text-slate-700 border-4 border-slate-300 hover:border-slate-400"
                       aria-hidden="true"
                     >
-                      return
+                      返回
                     </label>
                   </div>
                 </div>
               </div>
-            )}
+            {/* )} */}
 
             <button
               onClick={handleDrawCard}
-              className="px-7 py-3 w-full rounded dark:bg-blue-50 dark:text-slate-800 bg-slate-800 text-blue-50 dark:hover:bg-slate-800 dark:hover:text-blue-50 hover:bg-blue-50 hover:text-slate-800"
+              className="mt-4 px-7 py-3 w-full rounded dark:bg-blue-50 dark:text-slate-800 bg-slate-800 text-blue-50 dark:hover:bg-slate-800 dark:hover:text-blue-50 hover:bg-blue-50 hover:text-slate-800"
             >
               請抽一張卡
             </button>
