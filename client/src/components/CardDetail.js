@@ -55,9 +55,9 @@ function CardDetail() {
               className="more"
               aria-hidden="true"
             />
-            {/* {petData === undefined ? (
+            {petData === undefined ? (
               ''
-            ) : ( */}
+            ) : (
               <div className="content">
                 <div className="front" style={logo}>
                   <div className="inner">
@@ -86,7 +86,7 @@ function CardDetail() {
                   </div>
                 </div>
               </div>
-            {/* )} */}
+            )}
 
             <button
               onClick={handleDrawCard}
