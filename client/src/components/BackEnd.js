@@ -103,8 +103,8 @@ function BackEnd() {
     <>
       {auth ? (
         <div className="wrapper">
-          <div className="card z-20">
-            <div className="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <div className="w-[484px] z-20">
+            <div className="p-4 bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
               <form
                 onChange={handleFormChange}
                 onInvalid={handleFormInvalid}
@@ -141,11 +141,10 @@ function BackEnd() {
                     <small className="text-red-500">{fieldErrors.file}</small>
                   )}
                   {image.preview ? (
-                    <img
-                      src={image.preview}
-                      alt="preview"
-                      className="w-[200px]"
-                    />
+                    <div
+                      className="w-[420px] h-[340px] bg-center bg-cover"
+                      style={{ backgroundImage: `url(${image.preview})` }}
+                    ></div>
                   ) : (
                     <h5 className="text-center">Preview your photo</h5>
                   )}
