@@ -55,9 +55,9 @@ function CardDetail() {
               className="more"
               aria-hidden="true"
             />
-            {petData === undefined ? (
+            {/* {petData === undefined ? (
               ''
-            ) : (
+            ) : ( */}
               <div className="content">
                 <div className="front" style={logo}>
                   <div className="inner">
@@ -74,7 +74,8 @@ function CardDetail() {
                 <div className="back" style={style}>
                   <div className="inner">
                     <div className="description">
-                      <p>{petData && petData.description}</p>
+                      {/* <p>{petData && petData.description}</p> */}
+                      <p className="text-xl text-zinc-300">我們就是明星</p>
                     </div>
                     <label
                       htmlFor="card1"
@@ -86,7 +87,7 @@ function CardDetail() {
                   </div>
                 </div>
               </div>
-            )}
+            {/* )} */}
 
             <button
               onClick={handleDrawCard}
