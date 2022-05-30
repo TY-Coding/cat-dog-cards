@@ -74,7 +74,7 @@ function CardDetail() {
                 <div className="back" style={style}>
                   <div className="inner">
                     <div className="description">
-                      <p className="text-xl text-zinc-300 bg-zinc-800/[.7] rounded-md px-6 py-2">{petData && petData.description}</p>
+                      <p className="text-xl text-zinc-300/[.7] bg-zinc-800/[.45] rounded-md px-6 py-2">{petData && petData.description}</p>
                     </div>
                     <label
                       htmlFor="card1"
