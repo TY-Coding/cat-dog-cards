@@ -46,7 +46,6 @@ export default async function (req: any, res: Response) {
       });
     }
 
-    console.log(req.file);
     const newCard: any = {
       imageName: req.file?.key,
       description: req.body.description,

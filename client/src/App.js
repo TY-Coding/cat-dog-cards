@@ -27,12 +27,10 @@ function App() {
       document.documentElement.classList.remove('dark');
       localStorage.theme = 'light';
       setIsDarkMode(false);
-      console.log('remove dark:白天主題'); //for check
     } else {
       document.documentElement.classList.add('dark');
       localStorage.theme = 'dark';
       setIsDarkMode(true);
-      console.log('add dark:黑色主題'); //for check
     }
   };
   //====== 黑白主題改變時切換設定  ======//

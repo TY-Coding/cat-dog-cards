@@ -11,14 +11,12 @@ import { ApiUrl } from '../utils/config';
 function CardDetail() {
   const [loading, setLoading] = useState(false);
   const [petData, setPetData] = useState();
-  console.log('petData:', petData); //for check
 
   const handleDrawCard = () => {
     setLoading(true);
     async function sendSubmit() {
       try {
         const sendApi = await axios.get(ApiUrl);
-        console.log('Get sendApi:', sendApi.data);
         setPetData(sendApi.data);
         setLoading(false);
       } catch (e) {
