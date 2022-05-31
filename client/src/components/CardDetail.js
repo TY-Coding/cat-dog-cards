@@ -74,13 +74,13 @@ function CardDetail() {
                     <div className="description">
                       <p className="text-xl text-zinc-300/[.7] bg-zinc-800/[.45] rounded-md px-6 py-2">{petData && petData.description}</p>
                     </div>
-                    <label
+                    {/* <label
                       htmlFor="card1"
                       className="button text-lg text-slate-700 border-4 border-slate-300 hover:border-slate-400"
                       aria-hidden="true"
                     >
                       返回
-                    </label>
+                    </label> */}
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@ function CardDetail() {
               onClick={handleDrawCard}
               className="mt-4 px-7 py-3 w-full rounded dark:bg-blue-50 dark:text-slate-800 bg-slate-800 text-blue-50 dark:hover:bg-slate-800 dark:hover:text-blue-50 hover:bg-blue-50 hover:text-slate-800"
             >
-              請抽一張卡
+              {petData === undefined ? '請抽一張卡' : '再抽一張卡'}
             </button>
           </div>
         </div>
