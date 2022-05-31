@@ -27,16 +27,16 @@ app.use(express.static(path.join(__dirname, '/../build')));
 app.engine('html', renderFile);
 
 // app.get('/apidoc', async (_req, res) => {
-  //   res.render('index.html');
-  // });
+//     res.render('index.html');
+//   });
   
-  app.use('/api', CardRouter);
-  
-  app.get('/*', function (_req, res) {
-    res.sendFile(
-      path.join(__dirname, "/../build/index.html")
-    );
-  });
+app.use('/api', CardRouter);
+
+app.get('/*', function (_req, res) {
+  res.sendFile(
+    path.join(__dirname, "/../build/index.html")
+  );
+});
 
 app.listen(port, function () {
   console.log(`Listening on port ${port}...`);
