@@ -27,8 +27,8 @@ app.use(express.static(path.join(__dirname, '/../build')));
 app.engine('html', renderFile);
 
 // app.get('/apidoc', async (_req, res) => {
-//     res.render('index.html');
-//   });
+//   res.render('index.html');
+// });
   
 app.use('/api', CardRouter);
 

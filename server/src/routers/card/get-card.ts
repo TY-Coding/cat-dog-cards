@@ -27,13 +27,12 @@ const s3 = new aws.S3();
  * @apiSuccess {Object[]} data.description description of image
  * @apiSuccessExample {json} Success-Response:
  * {
- *    data: {
  *      imageName: "5a7c9181-76ff-49b2-862d-f990c7d50557.jpg",
  *      description: "This is dog"
- *    }
  * }
  * 
- * @apiError (422) validatedError 
+ * @apiUse validatedError 
+ * @apiUse cardNotFoundError 
  */
 
 export default async function (req: Request, res: Response) {
@@ -56,6 +55,11 @@ export default async function (req: Request, res: Response) {
     const cardId: number = parseInt(req.params.cardId);
 
     const cardFound: any = await CardModel.findById(cardId);
+    if (!cardFound) {
+      return res.status(404).json({
+        message: 'Card Not Found',
+      });
+    }
 
     const s3Params: any = {
       Bucket: process.env.S3_BUCKET!,
