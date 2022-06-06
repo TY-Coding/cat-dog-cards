@@ -16,7 +16,7 @@ aws.config.update({
 const s3 = new aws.S3();
 
 /**
- * @api {post} /api/cards List card
+ * @api {get} /api/cards List card
  * @apiName ListCard
  * @apiGroup Card
  *
