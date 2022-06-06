@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Blob, Blob1 } from './components/blob';
 import Card from './components/CardDetail';
 import Login from './components/Login';
-import BackEnd from './components/BackEnd';
+import Back from './components/Back';
+import Upload from './components/Upload';
 import NotFoundPage from './components/NotFoundPage';
 //====== below components end ======//
 
@@ -42,8 +43,11 @@ function App() {
           <div className="w-full h-full min-h-screen px-4 py-16 text-slate-800 dark:text-blue-50 bg-blue-50 dark:bg-slate-800 overflow-x-hidden">
             <div className="w-full max-w-xl p-2 mx-auto relative">
               <Switch>
+                <Route path="/upload">
+                  <Upload />
+                </Route>
                 <Route path="/back">
-                  <BackEnd />
+                  <Back />
                 </Route>
                 <Route path="/login">
                   <Login />

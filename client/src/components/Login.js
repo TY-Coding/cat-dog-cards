@@ -59,7 +59,7 @@ function Login() {
     let checkPassword = formData.get('password');
     if (checkEmail === Account && checkPassword === Password) {
       setAuth(true);
-      history.push('/back');
+      history.push('/upload');
     } else {
       setAuth(false);
       alert('帳號或密碼錯誤');

@@ -5,7 +5,7 @@ import { spinner } from './spinner'; //tailwind spinner
 
 //====== below api connect tool start ======//
 import axios from 'axios';
-import { ApiUrl } from '../utils/config';
+import { API_URL } from '../utils/config';
 //====== above api connect tool start ======//
 
 function CardDetail() {
@@ -16,7 +16,7 @@ function CardDetail() {
     setLoading(true);
     async function sendSubmit() {
       try {
-        const sendApi = await axios.get(ApiUrl);
+        const sendApi = await axios.get(API_URL + '/card');
         setPetData(sendApi.data);
         setLoading(false);
       } catch (e) {
