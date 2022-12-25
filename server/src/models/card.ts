@@ -11,6 +11,10 @@ const CardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  deleted: {
+    type: Boolean,
+    default: false,
+  }
 }, { collection: 'Card', _id: false });
 
 CardSchema.plugin(AutoIncrement);

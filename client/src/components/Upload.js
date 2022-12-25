@@ -4,30 +4,28 @@ import { Link } from 'react-router-dom';
 
 //====== below api connect tool start ======//
 import axios from 'axios';
-import { ApiUrl } from '../utils/config';
+import { API_URL } from '../utils/config';
 //====== above api connect tool start ======//
 
 //====== below icon start ======//
-import { CameraIcon, HomeIcon } from '@heroicons/react/solid';
+import { CameraIcon, HomeIcon, ViewListIcon } from '@heroicons/react/solid';
 //====== above icon end ======//
 
 //====== below 取得Context資料 start ======//
 import { useData } from '../utils/context';
 //====== above 取得Context資料 end ======//
 
-function BackEnd() {
+function Upload() {
   const history = useHistory();
   const { auth } = useData(); // 取得登入狀態
 
   const [image, setImage] = useState({ preview: '', raw: '' });
-  console.log('image', image.raw); //for check
 
   //存欄位值
   const [fields, setFields] = useState({
     file: '',
     description: '',
   });
-  console.log('fields', fields); //for check
 
   //存錯誤訊息
   const [fieldErrors, setFieldErrors] = useState({
@@ -77,14 +75,11 @@ function BackEnd() {
     data.append('description', fields.description);
     let checkFile = data.get('uploadImage');
     let checkDescription = data.get('description');
-    console.log('checkFile', checkFile); //for check
-    console.log('checkDescription', checkDescription); //for check
 
     //NEXT: 送到伺服器去
     async function sendSubmit() {
       try {
-        const sendApi = await axios.post(ApiUrl, data);
-        console.log('Post sendApi:', sendApi.data); //for check
+        const sendApi = await axios.post(API_URL + '/card', data);
         setImage({ preview: '', raw: '' });
         setFields({
           file: '',
@@ -112,13 +107,21 @@ function BackEnd() {
                 className="space-y-6"
               >
                 <div className="flex items-center justify-between">
-                  <h5 className="text-xl font-medium ">後台</h5>
-                  <HomeIcon
-                    className="w-5 h-5 mr-2 cursor-pointer"
-                    onClick={() => {
-                      history.push('/');
-                    }}
-                  />
+                  <h5 className="text-xl font-medium ">上傳</h5>
+                  <div className="flex">
+                    <ViewListIcon
+                      className="w-5 h-5 mr-2 cursor-pointer"
+                      onClick={() => {
+                        history.push('/back');
+                      }}
+                    />
+                    <HomeIcon
+                      className="w-5 h-5 mr-2 cursor-pointer"
+                      onClick={() => {
+                        history.push('/');
+                      }}
+                    />
+                  </div>
                 </div>
                 <div>
                   <label className="block mb-2 text-sm font-medium">
@@ -196,4 +199,4 @@ function BackEnd() {
   );
 }
 
-export default BackEnd;
+export default Upload;
