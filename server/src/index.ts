@@ -2,9 +2,6 @@ import path from 'path';
 import express, {
   json,
 } from 'express';
-import {
-  renderFile,
-} from 'ejs';
 import 'dotenv/config';
 import cors from 'cors';
 import './utils/mongoose';
@@ -24,7 +21,6 @@ app.use(json());
 app.use(express.static(path.join(__dirname, '/../build')));
 // app.use(express.static(path.join(__dirname, '/../apidoc')));
 // app.set('views', __dirname + '/../apidoc');
-app.engine('html', renderFile);
 
 // app.get('/apidoc', async (_req, res) => {
 //   res.render('index.html');

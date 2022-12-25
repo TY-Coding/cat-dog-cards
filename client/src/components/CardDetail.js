@@ -56,34 +56,39 @@ function CardDetail() {
             {petData === undefined ? (
               ''
             ) : (
-              <div className="content">
-                <div className="front" style={logo}>
+              <>
+                <div className="content">
+                  <div className="front" style={logo}>
+                    <div className="inner">
+                      <h2 className="text-3xl text-zinc-700">喵喵狗狗共和卡</h2>
+                      <label
+                        htmlFor="card1"
+                        className="button text-lg text-slate-700 border-4 border-slate-300 hover:border-slate-400"
+                        aria-hidden="true"
+                      >
+                        翻牌
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div className="back" style={style}>
                   <div className="inner">
-                    <h2 className="text-3xl text-zinc-700">喵喵狗狗共和卡</h2>
+                    {/* <div className="description">
+                      <p className="text-xl text-zinc-300 bg-zinc-800/[.7] rounded-md px-6 py-2">{petData && petData.description}</p>
+                    </div> */}
                     <label
                       htmlFor="card1"
                       className="button text-lg text-slate-700 border-4 border-slate-300 hover:border-slate-400"
                       aria-hidden="true"
                     >
-                      翻牌
+                      返回
                     </label>
                   </div>
                 </div>
-                <div className="back" style={style}>
-                  <div className="inner">
-                    <div className="description">
-                      <p className="text-xl text-zinc-300/[.7] bg-zinc-800/[.45] rounded-md px-6 py-2">{petData && petData.description}</p>
-                    </div>
-                    {/* <label
-                      htmlFor="card1"
-                      className="button text-lg text-slate-700 border-4 border-slate-300 hover:border-slate-400"
-                      aria-hidden="true"
-                    >
-                      返回
-                    </label> */}
-                  </div>
+                <div className="description mt-2">
+                  <p className="text-xl text-zinc-300 bg-zinc-800/[.7] rounded-md px-6 py-2 text-center">{petData && petData.description}</p>
                 </div>
-              </div>
+              </>
             )}
 
             <button
