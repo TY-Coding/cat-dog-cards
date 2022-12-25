@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Blob, Blob1 } from './components/blob';
 import Card from './components/CardDetail';
 import Login from './components/Login';
-import BackEnd from './components/BackEnd';
+import Back from './components/Back';
+import Upload from './components/Upload';
 import NotFoundPage from './components/NotFoundPage';
 //====== below components end ======//
 
@@ -27,12 +28,10 @@ function App() {
       document.documentElement.classList.remove('dark');
       localStorage.theme = 'light';
       setIsDarkMode(false);
-      console.log('remove dark:白天主題'); //for check
     } else {
       document.documentElement.classList.add('dark');
       localStorage.theme = 'dark';
       setIsDarkMode(true);
-      console.log('add dark:黑色主題'); //for check
     }
   };
   //====== 黑白主題改變時切換設定  ======//
@@ -44,8 +43,11 @@ function App() {
           <div className="w-full h-full min-h-screen px-4 py-16 text-slate-800 dark:text-blue-50 bg-blue-50 dark:bg-slate-800 overflow-x-hidden">
             <div className="w-full max-w-xl p-2 mx-auto relative">
               <Switch>
+                <Route path="/upload">
+                  <Upload />
+                </Route>
                 <Route path="/back">
-                  <BackEnd />
+                  <Back />
                 </Route>
                 <Route path="/login">
                   <Login />

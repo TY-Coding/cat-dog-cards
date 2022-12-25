@@ -5,20 +5,18 @@ import { spinner } from './spinner'; //tailwind spinner
 
 //====== below api connect tool start ======//
 import axios from 'axios';
-import { ApiUrl } from '../utils/config';
+import { API_URL } from '../utils/config';
 //====== above api connect tool start ======//
 
 function CardDetail() {
   const [loading, setLoading] = useState(false);
   const [petData, setPetData] = useState();
-  console.log('petData:', petData); //for check
 
   const handleDrawCard = () => {
     setLoading(true);
     async function sendSubmit() {
       try {
-        const sendApi = await axios.get(ApiUrl);
-        console.log('Get sendApi:', sendApi.data);
+        const sendApi = await axios.get(API_URL + '/card');
         setPetData(sendApi.data);
         setLoading(false);
       } catch (e) {
@@ -72,24 +70,23 @@ function CardDetail() {
                       </label>
                     </div>
                   </div>
-                  <div className="back" style={style}>
-                    <div className="inner">
-                      {/* <div className="description">
-                        <p className="text-xl text-zinc-300 bg-zinc-800/[.7] rounded-md px-6 py-2">{petData && petData.description}</p>
-                      </div> */}
-                      <label
-                        htmlFor="card1"
-                        className="button text-lg text-slate-700 border-4 border-slate-300 hover:border-slate-400"
-                        aria-hidden="true"
-                      >
-                        返回
-                      </label>
-                    </div>
+                </div>
+                <div className="back" style={style}>
+                  <div className="inner">
+                    {/* <div className="description">
+                      <p className="text-xl text-zinc-300 bg-zinc-800/[.7] rounded-md px-6 py-2">{petData && petData.description}</p>
+                    </div> */}
+                    <label
+                      htmlFor="card1"
+                      className="button text-lg text-slate-700 border-4 border-slate-300 hover:border-slate-400"
+                      aria-hidden="true"
+                    >
+                      返回
+                    </label>
                   </div>
                 </div>
                 <div className="description mt-2">
-                  {/* <p className="text-xl text-zinc-300 bg-zinc-800/[.7] rounded-md px-6 py-2">{petData && petData.description}</p> */}
-                  <p className="text-xl text-zinc-300 bg-zinc-800/[.7] rounded-md px-6 py-2 text-center">這是文字這是文字這是文字這是文字這是文字這是文字</p>
+                  <p className="text-xl text-zinc-300 bg-zinc-800/[.7] rounded-md px-6 py-2 text-center">{petData && petData.description}</p>
                 </div>
               </>
             )}
@@ -98,7 +95,7 @@ function CardDetail() {
               onClick={handleDrawCard}
               className="mt-4 px-7 py-3 w-full rounded dark:bg-blue-50 dark:text-slate-800 bg-slate-800 text-blue-50 dark:hover:bg-slate-800 dark:hover:text-blue-50 hover:bg-blue-50 hover:text-slate-800"
             >
-              請抽一張卡
+              {petData === undefined ? '請抽一張卡' : '再抽一張卡'}
             </button>
           </div>
         </div>
