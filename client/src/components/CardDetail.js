@@ -16,7 +16,7 @@ function CardDetail() {
     setLoading(true);
     async function sendSubmit() {
       try {
-        const sendApi = await axios.get(API_URL + '/card');
+        const sendApi = await axios.get(API_URL);
         setPetData(sendApi.data);
         setLoading(false);
       } catch (e) {
